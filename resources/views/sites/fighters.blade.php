@@ -81,6 +81,9 @@
             </div>
         @endforeach
     </div>
+    <div class="pagination">
+        {{ $fighters->links() }}
+    </div>
 </main>
 
 <x-site-layout-footer/>

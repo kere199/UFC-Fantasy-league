@@ -9,7 +9,7 @@ class FighterController extends Controller
 {
     public function index()
     {
-        $fighters = Fighter::all();
+        $fighters = Fighter::paginate(9);
         return view('sites.fighters', compact('fighters'));
     }
 
