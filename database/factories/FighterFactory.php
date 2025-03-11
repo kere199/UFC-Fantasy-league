@@ -21,6 +21,7 @@ class FighterFactory extends Factory
                 'Bantamweight',
                 'Flyweight',
             ]),
+            'photo_url' => 'https://picsum.photos/300/400?random=' . rand(1, 1000),
         ];
     }
 }

@@ -13,6 +13,7 @@ class Fighter extends Model
         'name',
         'birthday',
         'weightclass',
+        'photo_url',
     ];
 
     // Optionally cast birthday to a date

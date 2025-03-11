@@ -22,6 +22,7 @@ return new class extends Migration
                 'Bantamweight',
                 'Flyweight',
             ]);
+            $table->string('photo_url')->nullable();
             $table->timestamps();
         });
     }

@@ -73,6 +73,7 @@
     <div class="fighters-grid">
         @foreach ($fighters as $fighter)
             <div class="fighter-card">
+                <img src="{{ $fighter->photo_url }}" alt="{{ $fighter->name }} Photo">
                 <h2>{{ $fighter->name }}</h2>
                 <p>Birthday: {{ $fighter->birthday->format('Y-m-d') }}</p>
                 <p>Weightclass: {{ $fighter->weightclass }}</p>

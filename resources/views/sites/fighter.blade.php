@@ -59,6 +59,7 @@
 
 <main>
     <div class="fighter-details">
+        <img src="{{ $fighter->photo_url }}" alt="{{ $fighter->name }} Photo">
         <h1>{{ $fighter->name }}</h1>
         <p>Birthday: {{ $fighter->birthday->format('Y-m-d') }}</p>
         <p>Weightclass: {{ $fighter->weightclass }}</p>
