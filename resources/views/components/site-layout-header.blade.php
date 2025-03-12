@@ -6,13 +6,25 @@
         </div>
         <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0;">
             <li><a href="{{ route('home') }}" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Home</a></li>
-            <li><a href="#" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Register</a></li>
-            <li><a href="#" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Login</a></li>
+            <li><a href="{{ route('fighters.index') }}" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Fighters</a></li>
+            @guest
+                <li><a href="{{ route('login') }}" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Login</a></li>
+                <li><a href="{{ route('register') }}" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Register</a></li>
+            @endguest
+            @auth
+                <li><a href="#" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Profile</a></li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" style="color: #FFD700; background: none; border: none; cursor: pointer; text-decoration: none; transition: color 0.2s;">Logout</button>
+                    </form>
+                </li>
+            @endauth
         </ul>
     </nav>
 </header>
 <style>
-    header a:hover {
+    header a:hover, header button:hover {
         color: #FFA500;
     }
 </style>
