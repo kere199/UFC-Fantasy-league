@@ -22,6 +22,7 @@ class FighterFactory extends Factory
                 'Flyweight',
             ]),
             'photo_url' => 'https://picsum.photos/300/400?random=' . rand(1, 1000),
+            'price' => $this->faker->numberBetween(100, 1000),
         ];
     }
 }

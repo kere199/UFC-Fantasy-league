@@ -14,10 +14,18 @@ class Fighter extends Model
         'birthday',
         'weightclass',
         'photo_url',
+        'price',
     ];
+
+
 
     // Optionally cast birthday to a date
     protected $casts = [
         'birthday' => 'date',
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

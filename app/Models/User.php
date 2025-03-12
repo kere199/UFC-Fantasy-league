@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'coins',
+        'points',
     ];
 
     /**
@@ -33,6 +35,16 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected $attributes = [
+        'coins' => 3000,
+        'points' => 0,
+    ];
+
+    public function fighters()
+    {
+        return $this->belongsToMany(Fighter::class);
+    }
 
     /**
      * Get the attributes that should be cast.

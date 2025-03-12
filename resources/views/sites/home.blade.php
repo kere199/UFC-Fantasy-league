@@ -68,22 +68,6 @@
             color: #FFD700;
             margin-right: 10px;
         }
-        .button {
-            display: block;
-            width: 200px;
-            margin: 30px auto 0;
-            padding: 12px;
-            background-color: #FFD700;
-            color: #000000;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 25px;
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #FFA500;
-        }
     </style>
 </head>
 <body>
@@ -103,7 +87,6 @@
                 <li>Compete on the leaderboard to become the ultimate UFC fantasy champion!</li>
             </ul>
         </div>
-        <a href="#" class="button">Join the Fight Now</a>
     </section>
 </main>
 

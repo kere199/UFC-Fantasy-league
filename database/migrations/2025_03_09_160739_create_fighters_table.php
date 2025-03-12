@@ -23,6 +23,7 @@ return new class extends Migration
                 'Flyweight',
             ]);
             $table->string('photo_url')->nullable();
+            $table->integer('price')->default(500);
             $table->timestamps();
         });
     }
