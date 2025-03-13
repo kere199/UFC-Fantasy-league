@@ -63,6 +63,7 @@
         <h1>{{ $fighter->name }}</h1>
         <p>Birthday: {{ $fighter->birthday->format('Y-m-d') }}</p>
         <p>Weightclass: {{ $fighter->weightclass }}</p>
+        <p>Price: {{ $fighter->price }} coins</p>
         <a href="{{ route('fighters.index') }}">Back to Fighters</a>
     </div>
 </main>
