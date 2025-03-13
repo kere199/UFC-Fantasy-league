@@ -14,6 +14,12 @@ Route::resource('fighters', FighterController::class)->only(['index', 'show']);
 Route::middleware('auth')->group(function () {
     Route::post('/fighters/{fighter}/buy', [FighterController::class, 'store'])->name('fighters.buy');
     Route::delete('/fighters/{fighter}/sell', [FighterController::class, 'destroy'])->name('fighters.destroy');
+    Route::middleware(\App\Http\Middleware\Admin::class)->group(function () {
+        Route::get('/admin/fighters', [FighterController::class, 'adminIndex'])->name('admin.fighters.index');
+        Route::get('/admin/fighters/{fighter}/edit', [FighterController::class, 'edit'])->name('admin.fighters.edit');
+        Route::put('/admin/fighters/{fighter}', [FighterController::class, 'update'])->name('admin.fighters.update');
+        Route::delete('/admin/fighters/{fighter}', [FighterController::class, 'adminDestroy'])->name('admin.fighters.destroy');
+    });
 
 });
 Route::delete('/fighters/{fighter}/sell', [FighterController::class, 'destroy'])->middleware('auth')->name('fighters.destroy');

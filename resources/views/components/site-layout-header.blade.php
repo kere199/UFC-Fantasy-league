@@ -18,6 +18,13 @@
                         <button type="submit" style="color: #FFD700; background: none; border: none; cursor: pointer; text-decoration: none; transition: color 0.2s;">Logout</button>
                     </form>
                 </li>
+                @auth
+                    @if (Auth::user()->is_admin)
+                        <li><a href="{{ route('admin.fighters.index') }}" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Admin</a></li>
+                    @endif
+{{--                    <li><a href="{{ route('profile') }}" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Profile</a></li>--}}
+                    <!-- Logout form remains -->
+                @endauth
             @endauth
         </ul>
     </nav>

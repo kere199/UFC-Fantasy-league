@@ -52,4 +52,36 @@ class FighterController extends Controller
 
         return redirect()->route('profile')->with('success', 'Successfully sold ' . $fighter->name . ' for ' . $fighter->price . ' coins!');
     }
+
+    public function adminIndex()
+    {
+        $fighters = Fighter::paginate(10);
+        return view('admin.fighters.index', compact('fighters'));
+    }
+
+    public function edit(Fighter $fighter)
+    {
+        return view('admin.fighters.edit', compact('fighter'));
+    }
+
+    public function update(Request $request, Fighter $fighter)
+    {
+        $request->validate([
+            'weightclass' => 'required|in:Heavyweight,Light Heavyweight,Middleweight,Welterweight,Lightweight,Featherweight,Bantamweight,Flyweight',
+            'price' => 'required|integer|min:100',
+        ]);
+
+        $fighter->update([
+            'weightclass' => $request->weightclass,
+            'price' => $request->price,
+        ]);
+
+        return redirect()->route('admin.fighters.index')->with('success', 'Fighter updated successfully!');
+    }
+
+    public function adminDestroy(Fighter $fighter)
+    {
+        $fighter->delete();
+        return redirect()->route('admin.fighters.index')->with('success', 'Fighter deleted successfully!');
+    }
 }
