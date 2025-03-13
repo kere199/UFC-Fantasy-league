@@ -78,6 +78,14 @@
                 <p>Birthday: {{ $fighter->birthday->format('Y-m-d') }}</p>
                 <p>Weightclass: {{ $fighter->weightclass }}</p>
                 <a href="{{ route('fighters.show', $fighter) }}">View Details</a>
+                @auth
+                    <form action="{{ route('fighters.buy', $fighter) }}" method="POST">
+                        @csrf
+                        <button type="submit">Buy</button>
+                    </form>
+                @else
+                    <a href="{{ route('login') }}">Login to Buy</a>
+                @endauth
             </div>
         @endforeach
     </div>
