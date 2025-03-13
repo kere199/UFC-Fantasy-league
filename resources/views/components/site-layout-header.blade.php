@@ -12,8 +12,7 @@
                 <li><a href="{{ route('register') }}" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Register</a></li>
             @endguest
             @auth
-                <li><a href="#" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Profile</a></li>
-                <li>
+                <li><a href="{{ route('profile') }}" style="color: #FFD700; text-decoration: none; transition: color 0.2s;">Profile</a></li>                <li>
                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf
                         <button type="submit" style="color: #FFD700; background: none; border: none; cursor: pointer; text-decoration: none; transition: color 0.2s;">Logout</button>
