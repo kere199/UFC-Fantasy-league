@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-//Route:: get('/fighters', [FighterController::class, 'index'])->name('fighters.index');
-//Route::get('/fighters/{fighter}', [FighterController::class, 'show'])->name('fighters.show');
-//Route::post('/fighters/{fighter}/buy', [FighterController::class, 'buy'])->middleware('auth')->name('fighters.buy');
+Route::get('/leaderboard', [UserController::class, 'leaderboard'])->name('leaderboard'); // New route
 Route::resource('fighters', FighterController::class)->only(['index', 'show']);
 Route::middleware('auth')->group(function () {
     Route::post('/fighters/{fighter}/buy', [FighterController::class, 'store'])->name('fighters.buy');
