@@ -93,6 +93,11 @@
             <div class="message success">{{ session('success') }}</div>
         @endif
 
+        <form action="{{ route('admin.run-season') }}" method="POST" style="text-align: center; margin-bottom: 20px;">
+            @csrf
+            <button type="submit" class="btn" style="background-color: #28a745; color: #fff;">Run Season</button>
+        </form>
+
         <table>
             <thead>
             <tr>

@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/fighters/{fighter}/edit', [FighterController::class, 'edit'])->name('admin.fighters.edit');
         Route::put('/admin/fighters/{fighter}', [FighterController::class, 'update'])->name('admin.fighters.update');
         Route::delete('/admin/fighters/{fighter}', [FighterController::class, 'adminDestroy'])->name('admin.fighters.destroy');
+        Route::post('/admin/run-season', [FighterController::class, 'runSeason'])->name('admin.run-season');
     });
 
 });

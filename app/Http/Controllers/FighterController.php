@@ -2,6 +2,7 @@
 // app/Http/Controllers/FighterController.php
 namespace App\Http\Controllers;
 
+use App\Models\Fight;
 use App\Models\Fighter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -83,5 +84,48 @@ class FighterController extends Controller
     {
         $fighter->delete();
         return redirect()->route('admin.fighters.index')->with('success', 'Fighter deleted successfully!');
+    }
+
+
+    public function runSeason(Request $request)
+    {
+        $fights = Fight::all();
+
+        foreach ($fights as $fight) {
+            $fighter1Users = $fight->fighter1->users;
+            $fighter2Users = $fight->fighter2->users;
+
+            if ($fight->winner_id === null) {
+                // Draw: 15 points for both fighters' users
+                $this->updateUserPoints($fighter1Users, 15);
+                $this->updateUserPoints($fighter2Users, 15);
+            } else {
+                $pointsForWinner = match ($fight->method) {
+                    'decision' => 30,
+                    'submission' => 45,
+                    'knockout' => 60,
+                    default => 10, // Fallback
+                };
+                $pointsForLoser = 10;
+
+                if ($fight->winner_id === $fight->fighter_1_id) {
+                    $this->updateUserPoints($fighter1Users, $pointsForWinner);
+                    $this->updateUserPoints($fighter2Users, $pointsForLoser);
+                } else {
+                    $this->updateUserPoints($fighter1Users, $pointsForLoser);
+                    $this->updateUserPoints($fighter2Users, $pointsForWinner);
+                }
+            }
+        }
+
+        return redirect()->route('admin.fighters.index')->with('success', 'Season run successfully! Points updated.');
+    }
+
+    private function updateUserPoints($users, $points)
+    {
+        foreach ($users as $user) {
+            $user->points += $points;
+            $user->save();
+        }
     }
 }

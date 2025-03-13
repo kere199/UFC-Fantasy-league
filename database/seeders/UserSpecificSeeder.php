@@ -27,8 +27,8 @@ class UserSpecificSeeder extends Seeder
         if (!User::where('email', 'nico@deblauwe.be')->exists()) {
             User::create([
                 'name' => 'Nico Deblauwe',
-                'email' => 'nico@deblauwe.be',
-                'password' => '$2y$12$0IvSG2UEsUdrt8fESwHSXezV6ft2Ulx82rHm85gx3z3RAbfydGd/y', // Existing hash or replace
+                'email' => 'nicodeblauwe@gmail.com',
+                'password' => Hash::make('nikoniko1234'),
                 'coins' => 3000,
                 'points' => 0,
                 'is_admin' => false,
