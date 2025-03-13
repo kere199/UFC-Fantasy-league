@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('coins')->default(3000);  // Added
             $table->integer('points')->default(0);
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'coins',
         'points',
+        'is_admin',
     ];
 
     /**

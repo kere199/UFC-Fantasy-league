@@ -18,6 +18,7 @@ class UserSpecificSeeder extends Seeder
                 'password' => Hash::make('kereleishvili1234'), // Replace with your hash
                 'coins' => 3000,
                 'points' => 0,
+                'is_admin' => true,
                 'email_verified_at' => now(),
             ]);
         }
@@ -30,6 +31,7 @@ class UserSpecificSeeder extends Seeder
                 'password' => '$2y$12$0IvSG2UEsUdrt8fESwHSXezV6ft2Ulx82rHm85gx3z3RAbfydGd/y', // Existing hash or replace
                 'coins' => 3000,
                 'points' => 0,
+                'is_admin' => false,
                 'email_verified_at' => now(),
             ]);
         }
