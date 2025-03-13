@@ -115,7 +115,7 @@
                             <p><strong>{{ $fighter->name }}</strong></p>
                             <p>Price: {{ $fighter->price }} coins</p>
                             <p>Weightclass: {{ $fighter->weightclass }}</p>
-                            <form action="{{ route('fighters.sell', $fighter) }}" method="POST">
+                            <form action="{{ route('fighters.destroy', $fighter) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Sell Fighter</button>

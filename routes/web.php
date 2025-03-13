@@ -7,11 +7,18 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/fighters', [FighterController::class, 'index'])->name('fighters.index');
-Route::get('/fighters/{fighter}', [FighterController::class, 'show'])->name('fighters.show');
-Route::post('/fighters/{fighter}/buy', [FighterController::class, 'buy'])->middleware('auth')->name('fighters.buy');
-Route::delete('/fighters/{fighter}/sell', [FighterController::class, 'sell'])->middleware('auth')->name('fighters.sell');
+//Route:: get('/fighters', [FighterController::class, 'index'])->name('fighters.index');
+//Route::get('/fighters/{fighter}', [FighterController::class, 'show'])->name('fighters.show');
+//Route::post('/fighters/{fighter}/buy', [FighterController::class, 'buy'])->middleware('auth')->name('fighters.buy');
+Route::resource('fighters', FighterController::class)->only(['index', 'show']);
+Route::middleware('auth')->group(function () {
+    Route::post('/fighters/{fighter}/buy', [FighterController::class, 'store'])->name('fighters.buy');
+    Route::delete('/fighters/{fighter}/sell', [FighterController::class, 'destroy'])->name('fighters.destroy');
+
+});
+Route::delete('/fighters/{fighter}/sell', [FighterController::class, 'destroy'])->middleware('auth')->name('fighters.destroy');
 Route::get('/profile', [UserController::class, 'show'])->middleware('auth')->name('profile');
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
