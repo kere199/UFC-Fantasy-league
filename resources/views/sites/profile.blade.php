@@ -71,6 +71,24 @@
             margin: 5px 0;
             font-size: 16px;
         }
+        .fighter-card button {
+            display: inline-block;
+            width: 120px; /* Fixed width for consistency */
+            margin-top: 10px; /* Spacing above button */
+            padding: 10px 15px; /* Larger padding */
+            background-color: #FFD700; /* Gold background */
+            color: #000000; /* Black text */
+            font-weight: bold; /* Bold text */
+            border: none;
+            border-radius: 25px; /* Rounded edges */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; /* Smooth hover and click effect */
+        }
+
+        .fighter-card button:hover {
+            background-color: #FFA500; /* Orange on hover */
+            transform: scale(1.05); /* Slight scale-up on hover */
+        }
     </style>
 </head>
 <body>

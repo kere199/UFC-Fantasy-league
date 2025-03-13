@@ -63,6 +63,25 @@
         .fighter-card a:hover {
             background-color: #FFA500;
         }
+        .fighter-card a, .fighter-card button {
+            display: inline-block;
+            width: 120px; /* Fixed width for consistency */
+            margin: 10px 5px; /* Spacing between buttons */
+            padding: 10px 15px; /* Larger padding for better click area */
+            background-color: #FFD700; /* Gold background */
+            color: #000000; /* Black text */
+            text-decoration: none;
+            font-weight: bold; /* Bold text */
+            border: none;
+            border-radius: 25px; /* Rounded edges */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; /* Smooth hover and click effect */
+        }
+
+        .fighter-card a:hover, .fighter-card button:hover {
+            background-color: #FFA500; /* Orange on hover */
+            transform: scale(1.05); /* Slight scale-up on hover */
+        }
     </style>
 </head>
 <body>
