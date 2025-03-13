@@ -9,7 +9,8 @@ use Livewire\Volt\Volt;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/fighters', [FighterController::class, 'index'])->name('fighters.index');
 Route::get('/fighters/{fighter}', [FighterController::class, 'show'])->name('fighters.show');
-Route::post('/fighters/{fighter}/buy', [FighterController::class, 'buy'])->middleware('auth')->name('fighters.buy'); // New route
+Route::post('/fighters/{fighter}/buy', [FighterController::class, 'buy'])->middleware('auth')->name('fighters.buy');
+Route::delete('/fighters/{fighter}/sell', [FighterController::class, 'sell'])->middleware('auth')->name('fighters.sell');
 Route::get('/profile', [UserController::class, 'show'])->middleware('auth')->name('profile');
 
 Route::view('dashboard', 'dashboard')

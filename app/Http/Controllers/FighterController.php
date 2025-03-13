@@ -40,5 +40,22 @@ class FighterController extends Controller
 
         return redirect()->route('profile')->with('success', 'Successfully bought ' . $fighter->name . '!');
     }
+
+    public function sell(Request $request, Fighter $fighter)
+    {
+        $user = Auth::user();
+
+        // Check if the user owns the fighter
+        if (!$user->fighters()->where('fighter_id', $fighter->id)->exists()) {
+            return redirect()->route('profile')->with('error', 'You do not own this fighter.');
+        }
+
+        // Remove the fighter and refund the full price
+        $user->fighters()->detach($fighter->id);
+        $user->coins += $fighter->price; // Increase balance by fighter's price
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Successfully sold ' . $fighter->name . ' for ' . $fighter->price . ' coins!');
+    }
 }
 
