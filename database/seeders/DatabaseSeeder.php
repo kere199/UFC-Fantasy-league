@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             $randomFighters = $fighters->random(rand(1, 5));
             $user->fighters()->attach($randomFighters);
         }
+        \App\Models\Fight::factory(20)->create();
 
         User::factory()->create([
             'name' => 'Test User',
